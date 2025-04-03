@@ -1,4 +1,4 @@
-package de.odisho.store;
+package de.odisho.store.modle;
 
 import lombok.Data;
 
