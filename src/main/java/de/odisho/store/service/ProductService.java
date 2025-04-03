@@ -23,4 +23,14 @@ public class ProductService {
     public List<Product> getProducts() {
         return products;
     }
+
+    public Product getProductById(int prodId) {
+        try {
+
+            return products.stream().filter(p -> p.getProdId() == prodId).findFirst().get();
+        } catch (Exception e) {
+            System.out.println("Product not available!");
+            return null;
+        }
+    }
 }
