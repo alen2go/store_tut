@@ -8,18 +8,22 @@ import org.springframework.stereotype.Service;
 
 import de.odisho.store.modle.Product;
 
-
 // all the logic will be in the service
 
 @Service
 public class ProductService {
 
+    private final Product product;
+
     // Dummy Data
     List<Product> products = new ArrayList<>(Arrays.asList(
-        new Product(101, "iPhone", 1200),
-        new Product(102, "macbook", 3500),
-        new Product(103, "mac studio", 4000)
-    ));
+            new Product(101, "iPhone", 1200),
+            new Product(102, "macbook", 3500),
+            new Product(103, "mac studio", 4000)));
+
+    ProductService(Product product) {
+        this.product = product;
+    }
 
     public List<Product> getProducts() {
         return products;
@@ -41,6 +45,16 @@ public class ProductService {
     }
 
     public void updateProduct(Product product) {
-        
+        for (Product p : products) {
+            if (p.getProdId() == product.getProdId()) {
+                p.setPrice(product.getPrice());
+                p.setProdName(product.getProdName());
+                break;
+            }
+        }
+    }
+
+    public void deleteProductById(Product product) {
+        products.remove(product);
     }
 }
