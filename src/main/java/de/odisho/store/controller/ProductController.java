@@ -8,13 +8,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import de.odisho.store.modle.Product;
 import de.odisho.store.service.ProductService;
 import org.springframework.web.bind.annotation.PutMapping;
 
+
 @RestController
+@RequestMapping("/api")
 public class ProductController {
 
     private final Product product;
@@ -25,6 +28,12 @@ public class ProductController {
     ProductController(Product product) {
         this.product = product;
     }
+
+    @RequestMapping("/")
+    public String requestMethodName() {
+        return "Hello, World!";
+    }
+    
 
     @GetMapping("/products")
     public List<Product> getProducts() {
