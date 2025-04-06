@@ -48,6 +48,6 @@ public class ProductController {
 
     @DeleteMapping("/products/{prodId}")
     public void deleteProductById(@PathVariable int prodId) {
-        service.deleteProductById(service.getProductById(prodId));
+        service.deleteProductById(prodId);
     }
 }

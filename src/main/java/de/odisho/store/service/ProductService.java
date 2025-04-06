@@ -1,60 +1,38 @@
 package de.odisho.store.service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import de.odisho.store.modle.Product;
+import de.odisho.store.repository.ProductRepo;
 
 // all the logic will be in the service
 
 @Service
 public class ProductService {
 
-    private final Product product;
-
-    // Dummy Data
-    List<Product> products = new ArrayList<>(Arrays.asList(
-            new Product(101, "iPhone", 1200),
-            new Product(102, "macbook", 3500),
-            new Product(103, "mac studio", 4000)));
-
-    ProductService(Product product) {
-        this.product = product;
-    }
+    @Autowired
+    ProductRepo productRepo;
 
     public List<Product> getProducts() {
-        return products;
+        return productRepo.findAll();
     }
 
     public Product getProductById(int prodId) {
-        try {
-
-            return products.stream().filter(p -> p.getProdId() == prodId).findFirst().get();
-        } catch (Exception e) {
-            System.out.println("Product not available!");
-            return null;
-        }
+        return productRepo.findById(prodId).orElse(new Product());
     }
 
     public void addProduct(Product product) {
-        System.out.println(product);
-        products.add(product);
+        productRepo.save(product);
     }
 
     public void updateProduct(Product product) {
-        for (Product p : products) {
-            if (p.getProdId() == product.getProdId()) {
-                p.setPrice(product.getPrice());
-                p.setProdName(product.getProdName());
-                break;
-            }
-        }
+        productRepo.save(product);
     }
 
-    public void deleteProductById(Product product) {
-        products.remove(product);
+    public void deleteProductById(int prodId) {
+        productRepo.deleteById(prodId);
     }
 }
