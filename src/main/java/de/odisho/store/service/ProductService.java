@@ -20,8 +20,8 @@ public class ProductService {
         return productRepo.findAll();
     }
 
-    public Product getProductById(int prodId) {
-        return productRepo.findById(prodId).orElse(new Product());
+    public Product getProductById(int id) {
+        return productRepo.findById(id).orElse(new Product());
     }
 
     public void addProduct(Product product) {
@@ -32,7 +32,7 @@ public class ProductService {
         productRepo.save(product);
     }
 
-    public void deleteProductById(int prodId) {
-        productRepo.deleteById(prodId);
+    public void deleteProductById(int id) {
+        productRepo.deleteById(id);
     }
 }
