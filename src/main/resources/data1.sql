@@ -1,13 +1,13 @@
 INSERT INTO
     product (
         name,
-        desc,
+        description,
         brand,
         price,
         categroy,
         release_date,
         available,
-        quantity
+        stock_quantity
     )
 VALUES
     (
