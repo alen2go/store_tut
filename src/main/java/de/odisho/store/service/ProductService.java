@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import de.odisho.store.modle.Product;
+import de.odisho.store.model.Product;
 import de.odisho.store.repository.ProductRepo;
 
 // all the logic will be in the service

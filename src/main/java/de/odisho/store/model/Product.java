@@ -1,4 +1,4 @@
-package de.odisho.store.modle;
+package de.odisho.store.model;
 
 import java.math.BigDecimal;
 import java.util.Date;
